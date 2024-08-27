@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "kickoff_project"
+rootProject.name = "forwardProject"
 include ':app'
