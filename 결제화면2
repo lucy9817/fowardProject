@@ -1,0 +1,93 @@
+################MainActivity.java###########
+package com.example.myapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button confirmButton = findViewById(R.id.confirmButton);
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NextActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
+#######################activity_main.xml################
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/depositorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="입금자명"/>
+
+    <EditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="휴대폰"
+        android:layout_below="@id/depositorName"/>
+
+    <EditText
+        android:id="@+id/accountNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="계좌번호"
+        android:layout_below="@id/phoneNumber"/>
+
+    <EditText
+        android:id="@+id/transferAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이체금액"
+        android:layout_below="@id/accountNumber"/>
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:layout_below="@id/transferAmount"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
+
+####################NextActivity.java##############
+package com.example.myapp;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class NextActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_next);
+    }
+}
+
+#####################activity_next.xml###############<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다음 화면"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>
+
