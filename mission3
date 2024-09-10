@@ -69,7 +69,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="리프팅은 축구공이나 풋살공을 양 발로 차서...\n(이하 설명)"
+        android:text="리프팅은 축구공이나 풋살공을 양 발로 차서\n
+번갈아가며 공중에 띄우는데 땅에 떨어뜨리지 않고\n
+지속적으로 반복하는 것을 말합니다.\n
+쉬워보이지만 일정한 높이와 방향으로 \n
+계속 공을 튕기는 것은 매우 어렵습니다.\n"
         android:textSize="16sp"
         android:textColor="#000000"/>
 
