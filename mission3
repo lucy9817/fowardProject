@@ -1,0 +1,153 @@
+###############1. activity_level1.xml 파일 생성################
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!-- 상단 레벨 제목 -->
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="레벨1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_gravity="center"/>
+
+    <!-- 미션 이미지 -->
+    <ImageView
+        android:id="@+id/mission_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/sample_image" <!-- 이미지 파일을 여기에 추가 -->
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"/>
+
+    <!-- 리프팅 설명 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="리프팅"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 5회 이상"
+            android:textSize="18sp"
+            android:textColor="#FF0000"
+            android:layout_marginLeft="4dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="300pt"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:gravity="end"/>
+    </LinearLayout>
+
+    <!-- 리프팅 설명 텍스트 -->
+    <TextView
+        android:id="@+id/mission_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="리프팅은 축구공이나 풋살공을 양 발로 차서...\n(이하 설명)"
+        android:textSize="16sp"
+        android:textColor="#000000"/>
+
+    <!-- 포인트 받기 버튼 -->
+    <Button
+        android:id="@+id/mission_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="포인트 받기"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#4CAF50"
+        android:layout_marginTop="16dp"/>
+
+    <!-- 하단 네비게이션 아이콘 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/home_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_home"/>
+
+        <ImageView
+            android:id="@+id/mission_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_mission"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"/>
+
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_profile"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+
+#####################MainActivity.java 파일 작성####################
+package com.example.yourapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_level1);  // activity_level1.xml 파일과 연결
+
+        // 포인트 받기 버튼
+        Button missionButton = findViewById(R.id.mission_button);
+        missionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 버튼 클릭 시 토스트 메시지 표시
+                Toast.makeText(MainActivity.this, "포인트 받기 버튼 클릭됨", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+
+##################3. Drawable 파일 설정 (선택 사항)[border.xml (테두리 추가용)]#################
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- 배경색 흰색 -->
+    <stroke android:width="1dp" android:color="#D3D3D3"/> <!-- 회색 테두리 -->
+    <corners android:radius="4dp"/> <!-- 모서리 둥글게 -->
+</shape>
