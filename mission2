@@ -1,3 +1,4 @@
+################## 1. activity_level1.xml 파일 생성 ###################
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -84,3 +85,40 @@
         android:layout_marginTop="16dp"/>
 
 </LinearLayout>
+
+#################2. MainActivity.java 파일 작성########################
+
+package com.example.yourapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_level1);  // activity_level1.xml 파일과 연결
+
+        // 미션 인증 버튼
+        Button missionButton = findViewById(R.id.mission_button);
+        missionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 버튼 클릭 시 토스트 메시지 표시
+                Toast.makeText(MainActivity.this, "미션 인증 버튼 클릭됨", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+
+################3. Drawable 파일 설정 (선택 사항) [border.xml (테두리 추가용)] ##################
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- 배경색 흰색 -->
+    <stroke android:width="1dp" android:color="#D3D3D3"/> <!-- 회색 테두리 -->
+    <corners android:radius="4dp"/> <!-- 모서리 둥글게 -->
+</shape>
