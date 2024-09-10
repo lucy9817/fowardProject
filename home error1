@@ -1,0 +1,105 @@
+############31. activity_no_service.xml 파일 생성###############
+  <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#FFFFFF">
+
+    <!-- 네트워크 에러 메시지 -->
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="서비스에 연결할 수 없습니다!"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <!-- 하단 안내문구 -->
+    <TextView
+        android:id="@+id/error_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="네트워크 연결 상태를 확인하고, 다시 시도해주세요"
+        android:textSize="16sp"
+        android:textColor="#808080"
+        android:layout_marginTop="8dp"
+        android:gravity="center"/>
+
+    <!-- 로딩 애니메이션 (ProgressBar) -->
+    <ProgressBar
+        android:id="@+id/loading_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <!-- 하단 네비게이션 바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginTop="32dp">
+
+        <ImageView
+            android:id="@+id/home_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_home"/>
+
+        <ImageView
+            android:id="@+id/mission_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_mission"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"/>
+
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_profile"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+  #######################2. NoServiceActivity.java 파일 작성#####################
+  package com.example.yourapp;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class NoServiceActivity extends AppCompatActivity {
+
+    private ProgressBar loadingSpinner;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_no_service); // activity_no_service.xml과 연결
+
+        // 로딩 스피너 초기화
+        loadingSpinner = findViewById(R.id.loading_spinner);
+
+        // 3초 후에 에러 메시지 표시
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // 네트워크가 연결되지 않았다고 가정하고, 메시지를 표시
+                Toast.makeText(NoServiceActivity.this, "연결 상태를 확인해주세요.", Toast.LENGTH_SHORT).show();
+            }
+        }, 3000); // 3초 대기
+    }
+}
+####################### 3Drawable 파일 설정 (선택 사항)
+하단 네비게이션 바에 사용할 아이콘들을 res/drawable 폴더에 추가################
