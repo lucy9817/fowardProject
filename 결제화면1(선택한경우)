@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="충전하기"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="충전할 금액"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/amount_3000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="3,000원" />
+
+        <Button
+            android:id="@+id/amount_5000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="5,000원" />
+
+        <Button
+            android:id="@+id/amount_7000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="7,000원" />
+
+        <Button
+            android:id="@+id/amount_10000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="10,000원" />
+
+        <Button
+            android:id="@+id/amount_12000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="12,000원"
+            android:backgroundTint="@android:color/holo_green_light" />
+
+        <Button
+            android:id="@+id/amount_15000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="15,000원" />
+
+        <Button
+            android:id="@+id/amount_20000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="20,000원" />
+
+        <Button
+            android:id="@+id/amount_25000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="25,000원" />
+
+        <Button
+            android:id="@+id/amount_30000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="30,000원" />
+
+        <Button
+            android:id="@+id/amount_35000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="35,000원" />
+
+        <Button
+            android:id="@+id/amount_40000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="40,000원" />
+
+        <Button
+            android:id="@+id/amount_50000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="50,000원" />
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="결제 방법"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="무통장입금"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="입금자명"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/depositorNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="홍길동" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="총 결제 금액"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/totalAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12,000원"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/chargeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="충전하기"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@android:color/holo_green_light" />
+</LinearLayout>
