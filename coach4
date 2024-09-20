@@ -1,0 +1,187 @@
+######################activity_chat.xml 수정 #####################
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 상단 바 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4CAF50"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/chat_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI 풋살 코칭"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"/>
+
+        <ImageButton
+            android:id="@+id/close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <!-- 채팅 내용 -->
+    <ScrollView
+        android:id="@+id/chat_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/chat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 초기 메시지 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <!-- 프로필 이미지 -->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_profile_placeholder"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/circle_background"/>
+
+                <!-- 메시지 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="안녕하세요. 00님! 무엇을 도와드릴까요?"
+                    android:background="@drawable/bubble_left"
+                    android:padding="12dp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 선택 버튼들 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="8dp">
+
+        <Button
+            android:id="@+id/rules_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="풋살 기술 알려줘"
+            android:background="@drawable/button_selector"/>
+
+        <!-- 필요시 다른 버튼 추가 -->
+    </LinearLayout>
+
+    <!-- 하단 메시지 입력 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#F5F5F5">
+
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="메시지를 입력해 주세요."
+            android:padding="12dp"
+            android:background="@drawable/edittext_background"/>
+
+        <ImageButton
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_send"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+</LinearLayout>
+
+
+######################## ChatActivity.java######################
+
+package com.example.yourapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ChatActivity extends AppCompatActivity {
+
+    private Button rulesButton;
+    private LinearLayout chatLayout;
+    private ScrollView chatScrollView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat); // activity_chat.xml과 연결
+
+        chatLayout = findViewById(R.id.chat_layout);
+        chatScrollView = findViewById(R.id.chat_scrollview);
+
+        // '풋살 기술 알려줘' 버튼 클릭 이벤트
+        rulesButton = findViewById(R.id.rules_button);
+        rulesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addMessageToChat("풋살 기술을  간단히 설명드릴게요!!\n" +
+                        "드리블: 공을 짧게 터치하며 빠르게 움직이기\n" +
+                        "패스: 짧고 정확한 패스 또는 긴 패스\n" +
+                        "슛: 강하고 정확한 골 슛\n" +
+                        "리프팅: 공을 짧게 띄워서 플레이\n" +
+                        "트랩: 공을 발로 안정적으로 받기\n" +
+                        "턴: 방향을 빠르게 바꾸기\n" +
+                        "등이 있습니다 ");
+            }
+        });
+    }
+
+    // 채팅에 메시지를 추가하는 함수
+    private void addMessageToChat(String message) {
+        // 새로운 TextView 생성
+        TextView textView = new TextView(this);
+        textView.setText(message);
+        textView.setBackgroundResource(R.drawable.bubble_left); // 버블 스타일
+        textView.setPadding(16, 16, 16, 16);
+        textView.setTextColor(getResources().getColor(android.R.color.black));
+        
+        // 새로운 메시지를 레이아웃에 추가
+        chatLayout.addView(textView);
+
+        // ScrollView를 맨 아래로 스크롤
+        chatScrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                chatScrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        });
+    }
+}
